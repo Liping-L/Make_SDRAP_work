@@ -108,6 +108,8 @@ sudo service httpd restart
 
 ***When using NAT mode for the virtual machine, 127.0.0.1 or localhost may work for the access from the host***
 
+***Use the right port as defined above (e.g. 127.0.0.1:80)***
+
 
 ## Step 10: to enable the multi-threaded alignment of BLAST:
 ### modify the codes:
