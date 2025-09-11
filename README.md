@@ -60,6 +60,7 @@ IMPORTANT：
 
 
 ## Step 05: enable ServerName: 
+***use port 80 or any other***
 <pre>
 # edit 'ServerName' in /etc/httpd/conf/httpd.conf into: ServerName localhost:80
  sudo vi /etc/httpd/conf/httpd.conf   
@@ -67,6 +68,7 @@ IMPORTANT：
 </pre>
 
 ## Step 06: configure firewall:
+***use the same port as defined above***
 <pre>
  sudo vi /etc/sysconfig/iptables 
   # Add the following line: '-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT'
