@@ -23,9 +23,10 @@ IMPORTANT：
 
 ***There are 6 rpm files in total***
 
-### Remove the pre-installed mysql-libs that conflicts with MySQL-5.6.31
 <pre>
- sudo yum remove mysql-libs
+ sudo yum remove mysql-libs #Remove the pre-installed mysql-libs that conflicts with MySQL-5.6.31
+
+ 
  sudo rpm -ivh MySQL-client-5.6.31-1.el6.x86_64.rpm \
   MySQL-devel-5.6.31-1.el6.x86_64.rpm \
   MySQL-embedded-5.6.31-1.el6.x86_64.rpm \
