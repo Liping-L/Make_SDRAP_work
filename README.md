@@ -15,9 +15,9 @@ IMPORTANT：
 ***There are 5 rpm files in total.***
 (***php-pdo\* is the prerequisite of php-mysql\****)
 
-`sudo rpm -ivh php-common-*.rpm php-cli-*.rpm php-*.rpm php-pdo-*.rpm `
+` sudo rpm -ivh php-common-*.rpm php-cli-*.rpm php-*.rpm php-pdo-*.rpm`
 
-`sudo rpm -ivh php-mysql-*.rpm`
+` sudo rpm -ivh php-mysql-*.rpm`
 
 ## Step 03: install mysql 5.6.31
 
@@ -25,27 +25,27 @@ IMPORTANT：
 
 ### Remove the pre-installed mysql-libs that conflicts with MySQL-5.6.31
 <pre>
-sudo yum remove mysql-libs
-sudo rpm -ivh MySQL-client-5.6.31-1.el6.x86_64.rpm \
-MySQL-devel-5.6.31-1.el6.x86_64.rpm \
-MySQL-embedded-5.6.31-1.el6.x86_64.rpm \
-MySQL-shared-5.6.31-1.el6.x86_64.rpm \
-MySQL-shared-compat-5.6.31-1.el6.x86_64.rpm \
-MySQL-server-5.6.31-1.el6.x86_64.rpm 
+ sudo yum remove mysql-libs
+ sudo rpm -ivh MySQL-client-5.6.31-1.el6.x86_64.rpm \
+  MySQL-devel-5.6.31-1.el6.x86_64.rpm \
+  MySQL-embedded-5.6.31-1.el6.x86_64.rpm \
+  MySQL-shared-5.6.31-1.el6.x86_64.rpm \
+  MySQL-shared-compat-5.6.31-1.el6.x86_64.rpm \
+  MySQL-server-5.6.31-1.el6.x86_64.rpm 
 
-sudo  service mysql start
+ sudo  service mysql start
 </pre>
 
 ### The temporary root password for MySQL can be found at: 
 
-`sudo cat /root/.mysql_secret`
+` sudo cat /root/.mysql_secret`
 
 ### Then execute in terminal:
 <pre>
    mysql -u root -p   # Input temporary password
 </pre>
 <pre>
-  mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('new_root_password');  # set a new password for root
+   mysql> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('new_root_password');  # set a new password for root
    mysql> CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'new_user_password';  # create new user
    mysql> GRANT ALL PRIVILEGES ON *.* TO 'new_user'@'localhost';  # set password
    mysql> quit;
@@ -53,8 +53,9 @@ sudo  service mysql start
 
 ## Step 04: move BLAST executable files into /bin
 <pre>
-tar -xzf ncbi-blast-2.2.31+-x64-linux.tar.gz
-sudo cp ncbi-blast-2.2.31+/bin/* /bin 
+ wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.31/ncbi-blast-2.2.31+-x64-linux.tar.gz
+ tar -xzf ncbi-blast-2.2.31+-x64-linux.tar.gz
+ sudo cp ncbi-blast-2.2.31+/bin/* /bin 
 </pre>
 
 
@@ -88,19 +89,19 @@ sudo service httpd restart
 
 ## Step 08: configure SDRAP
 <pre>
-wget https://github.com/JasperBraun/SDRAP/archive/refs/tags/v1.0.0.tar.gz
-sudo cp SDRAP-1.0.0.tar.gz /var/www/html # or v1.0.0.tar.gz
-cd /var/www/html
-sudo tar -xzf SDRAP-1.0.0.tar.gz
-sudo mv SDRAP-1.0.0/* ./
-sudo sh install.sh
-sudo chcon -Rt httpd_user_content_t tmp # might not be necessary
+ wget https://github.com/JasperBraun/SDRAP/archive/refs/tags/v1.0.0.tar.gz
+ sudo cp SDRAP-1.0.0.tar.gz /var/www/html # or v1.0.0.tar.gz
+ cd /var/www/html
+ sudo tar -xzf SDRAP-1.0.0.tar.gz
+ sudo mv SDRAP-1.0.0/* ./
+ sudo sh install.sh
+ sudo chcon -Rt httpd_user_content_t tmp # might not be necessary
 </pre>
 
 ## Step 09: access CentOS web server in LAN
 ***Access the IP address of the virtual machine through a web browser on other machines in the LAN (e.g. http://192.168.xx.xxx, obtained using 'ifconfig')***
 
-`ifconfig | grep inet`
+` ifconfig | grep inet`
 
 ***When using NAT mode for the virtual machine, 127.0.0.1 or localhost may work for the access from the host***
 
@@ -115,9 +116,9 @@ sudo chcon -Rt httpd_user_content_t tmp # might not be necessary
 ### enable the system to allow multi-threaded BLAST by php
 <pre>
   # install EPEL library（if not installed）
-yum install epel-release -y
+  yum install epel-release -y
   # install policycoreutils-python
-yum install policycoreutils-python -y
+  yum install policycoreutils-python -y
 
   # create an SELinux policy module for BLAST
   sudo grep blastn /var/log/audit/audit.log | audit2allow -M myblast
