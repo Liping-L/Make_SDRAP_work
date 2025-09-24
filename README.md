@@ -1,5 +1,5 @@
 # Making_SDRAP_work
-Some requirements of SDRAP (https://github.com/JasperBraun/SDRAP)
+Here are some requirements of SDRAP (https://github.com/JasperBraun/SDRAP)
 
 IMPORTANT：
  These are just some personal steps that worked for me, but I hope they work for you too.
